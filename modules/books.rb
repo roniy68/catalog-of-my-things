@@ -1,6 +1,6 @@
 require_relative './book'
 class Books
-  attr_read :bookslist
+  attr_reader :bookslist
   def initialize
     @bookslist = []
   end
