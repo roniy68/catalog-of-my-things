@@ -1,4 +1,4 @@
-require './item'
+require_relative './item'
 class Book < Item
   def initialize(date, publisher, cover_state)
     super(date)
@@ -10,13 +10,15 @@ class Book < Item
     bookhash = {
       date: @publish_date,
       publisher: @publisher,
-      cover_state: @cover_state
+      cover_state: @cover_state,
+      labeltitle: @label.title,
+      labelcolor: @label.color
     }
     JSON.generate(bookhash)
   end
 
   def print_data
-    "Author: #{@author.first_name} #{@author.last_name} - Publisher: #{publisher} - Date: "
+    "Publisher: #{@publisher} - Date: #{@publish_date} State: #{@cover_state}\n"
   end
 
   private
