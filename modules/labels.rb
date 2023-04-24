@@ -2,6 +2,7 @@ require_relative './label'
 
 class Labels
   attr_accessor :labelslist
+
   def initialize
     @labelslist = []
   end
