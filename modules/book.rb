@@ -6,12 +6,6 @@ class Book < Item
     @cover_state = cover_state
   end
 
-  private
-
-  def can_be_archived?
-    super == true ? true : @cover_state == 'bad'
-  end
-
   def create_json
     bookhash = {
       date: @publish_date,
@@ -23,5 +17,11 @@ class Book < Item
 
   def print_data
     "Author: #{@author.first_name} #{@author.last_name} - Publisher: #{publisher} - Date: "
+  end
+
+  private
+
+  def can_be_archived?
+    super == true ? true : @cover_state == 'bad'
   end
 end
