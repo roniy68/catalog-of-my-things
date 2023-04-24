@@ -1,12 +1,18 @@
+require_relative './books'
+
 class App
-  def initalize; end
+  attr_accessor :books
+
+  def initalize
+    @books = Books.new
+  end
 
   # rubocop:disable Metrics/CyclomaticComplexity
   # rubocop:disable Metrics/MethodLength
   def evaluate_options(option)
     case option
     when 1
-      puts 'implement option 1'
+      list_items(@books.bookslist)
     when 2
       puts 'implement option 2'
     when 3
@@ -18,7 +24,7 @@ class App
     when 6
       puts 'implement option 6'
     when 7
-      puts 'implement option 7'
+      @books.add_book
     when 8
       puts 'implement option 8'
     when 9
@@ -29,4 +35,8 @@ class App
   end
   # rubocop:enable Metrics/CyclomaticComplexity
   # rubocop:enable Metrics/MethodLength
+
+  def list_items(list)
+    list.each_with_index { |obj, index| print "[#{index}] - #{obj.print_data}" }
+  end
 end

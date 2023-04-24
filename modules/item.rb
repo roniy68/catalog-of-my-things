@@ -1,14 +1,13 @@
 require 'date'
 
 class Item
-  def def(_initialize)
-    date
+  def initialize(date)
     @id = Random.rand(1...1000)
     @publish_date = Date.parse(date)
     @genre = nil
     @author = nil
     @label = nil
-    @archived
+    @archived = false
   end
 
   def move_to_archive
