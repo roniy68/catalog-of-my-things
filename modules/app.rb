@@ -1,6 +1,6 @@
 class App
-  def initalize
-  end
+  def initalize; end
+
   def evaluate_options(option)
     case option
     when 1
