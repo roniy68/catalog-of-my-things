@@ -4,7 +4,8 @@ require_relative './json_helper'
 
 class App
   attr_accessor :books
-  BOOKFILE = './data/books.json'
+
+  BOOKFILE = './data/books.json'.freeze
   def initialize
     @books = Books.new
     @labels = Labels.new
@@ -60,13 +61,13 @@ class App
   def create_objs_from_file(hashlist)
     hashlist.each do |obj|
       item = nil
-      if (obj['type'] == 'Book')
+      if obj['type'] == 'Book'
         item =
           @books.add_book(
             obj['name'],
             obj['publisher'],
             obj['date'],
-            obj['cover_state'],
+            obj['cover_state']
           )
       end
       @labels.add_label(item, obj['labeltitle'], obj['labelcolor'])

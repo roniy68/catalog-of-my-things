@@ -3,7 +3,7 @@ require 'date'
 class Item
   attr_accessor :label
 
-  def initialize(name = 'unknown', date)
+  def initialize(name, date)
     @id = Random.rand(1...1000)
     @name = name
     @publish_date = Date.parse(date)
