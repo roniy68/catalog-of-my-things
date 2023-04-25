@@ -1,5 +1,5 @@
 require_relative './label'
-require_relative './validator.rb'
+require_relative './validator'
 
 class Labels
   include Validator

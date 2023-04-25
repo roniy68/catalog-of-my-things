@@ -50,10 +50,10 @@ class App
   def list_items(list)
     list.each_with_index do |obj, index|
       print "[#{index + 1}] - #{obj.print_data}"
-      if (obj.class == Label)
-        obj.items.each_with_index do |item, index|
-          print "\t(#{index + 1}) #{item.print_data}"
-        end
+      next unless obj.instance_of?(Label)
+
+      obj.items.each_with_index do |item, i|
+        print "\t(#{i + 1}) #{item.print_data}"
       end
     end
   end
@@ -75,7 +75,7 @@ class App
             obj['name'],
             obj['publisher'],
             obj['date'],
-            obj['cover_state'],
+            obj['cover_state']
           )
       end
       @labels.add_label(item, obj['labeltitle'], obj['labelcolor'])

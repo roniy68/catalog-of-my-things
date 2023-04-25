@@ -7,11 +7,12 @@ module Validator
     end
     input
   end
+
   def validate_date
     date = validate_empty('date [YYYY-MM-DD]')
     until isvalid_date?(date)
       print "Please enter a valid date format [YYYY-MM-DD]\n"
-      date = validate_date()
+      date = validate_date
     end
     date
   end
