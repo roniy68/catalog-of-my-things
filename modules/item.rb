@@ -1,6 +1,8 @@
 require 'date'
 
 class Item
+  attr_accessor :label
+
   def initialize(date)
     @id = Random.rand(1...1000)
     @publish_date = Date.parse(date)

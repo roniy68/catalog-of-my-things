@@ -1,10 +1,12 @@
 require_relative './books'
+require_relative './labels'
 
 class App
   attr_accessor :books
 
-  def initalize
+  def initialize
     @books = Books.new
+    @labels = Labels.new
   end
 
   # rubocop:disable Metrics/CyclomaticComplexity
@@ -20,11 +22,12 @@ class App
     when 4
       puts 'implement option 4'
     when 5
-      puts 'implement option 5'
+      list_items(@labels.labelslist)
     when 6
       puts 'implement option 6'
     when 7
-      @books.add_book
+      book = @books.create_book
+      add_other_attributes(book)
     when 8
       puts 'implement option 8'
     when 9
@@ -35,6 +38,10 @@ class App
   end
   # rubocop:enable Metrics/CyclomaticComplexity
   # rubocop:enable Metrics/MethodLength
+
+  def add_other_attributes(item)
+    @labels.create_label(item)
+  end
 
   def list_items(list)
     list.each_with_index { |obj, index| print "[#{index}] - #{obj.print_data}" }
