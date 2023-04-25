@@ -1,5 +1,7 @@
 require_relative './books'
 require_relative './labels'
+require_relative './authors'
+require_relative './games'
 require_relative './json_helper'
 require 'pry'
 
@@ -10,6 +12,8 @@ class App
   def initialize
     @books = Books.new
     @labels = Labels.new
+    @games = Games.new
+    @authors = Authors.new
     read_files
   end
 
@@ -22,20 +26,21 @@ class App
     when 2
       puts 'implement option 2'
     when 3
-      puts 'implement option 3'
+      list_items(@games.gameslist)
     when 4
       puts 'implement option 4'
     when 5
       list_items(@labels.labelslist)
     when 6
-      puts 'implement option 6'
+      list_items(@authors.authorslist)
     when 7
       book = @books.create_book
       add_attributes(book)
     when 8
       puts 'implement option 8'
     when 9
-      puts 'implement option 9'
+      game = @games.create_game
+      add_attributes(game)
     else
       print "Please enter a valid option:\n"
     end
@@ -45,6 +50,7 @@ class App
 
   def add_attributes(item)
     @labels.create_label(item)
+    @authors.create_author(item)
   end
 
   def list_items(list)
