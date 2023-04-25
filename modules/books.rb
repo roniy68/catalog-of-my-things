@@ -8,19 +8,19 @@ class Books
   end
 
   def create_book
-    print "Enter book title: \n"
-    title = gets.chomp
+    print "Enter book name: \n"
+    name = gets.chomp
     print "Enter publisher name: \n"
     publisher = gets.chomp
     print "Enter publish date [YYYY-MM-DD]: \n"
     date = gets.chomp
     print "Cover state [new/good/bad]: \n"
     coverstate = gets.chomp
-    add_book(title, publisher, date, coverstate)
+    add_book(name, publisher, date, coverstate)
   end
 
-  def add_book(_title, publisher, date, coverstate)
-    book = Book.new(date, publisher, coverstate)
+  def add_book(name, publisher, date, coverstate)
+    book = Book.new(name, date, publisher, coverstate)
     @bookslist << book
     book
   end
