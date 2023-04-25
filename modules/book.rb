@@ -15,7 +15,7 @@ class Book < Item
       publisher: @publisher,
       cover_state: @cover_state,
       labeltitle: @label.title,
-      labelcolor: @label.color
+      labelcolor: @label.color,
     }
     JSON.generate(bookhash)
   end
@@ -27,6 +27,6 @@ class Book < Item
   private
 
   def can_be_archived?
-    super == true ? true : @cover_state == 'bad'
+    super || @cover_state == 'bad'
   end
 end
