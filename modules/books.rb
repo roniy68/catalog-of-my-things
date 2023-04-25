@@ -1,6 +1,8 @@
 require_relative './book'
 require_relative './label'
+require_relative './validator.rb'
 class Books
+  include Validator
   attr_accessor :bookslist
 
   def initialize
@@ -9,13 +11,13 @@ class Books
 
   def create_book
     print "Enter book name: \n"
-    name = gets.chomp
+    name = validate_empty('Book Name')
     print "Enter publisher name: \n"
-    publisher = gets.chomp
+    publisher = validate_empty('Publisher')
     print "Enter publish date [YYYY-MM-DD]: \n"
-    date = gets.chomp
+    date = validate_date()
     print "Cover state [new/good/bad]: \n"
-    coverstate = gets.chomp
+    coverstate = validate_empty('Cover state [new/good/bad]')
     add_book(name, publisher, date, coverstate)
   end
 

@@ -1,6 +1,8 @@
 require_relative './label'
+require_relative './validator.rb'
 
 class Labels
+  include Validator
   attr_accessor :labelslist
 
   def initialize
@@ -9,9 +11,9 @@ class Labels
 
   def create_label(item)
     print "Add label title: \n"
-    labelname = gets.chomp
+    labelname = validate_empty('Label Title')
     print "Add label color: \n"
-    labelcolor = gets.chomp
+    labelcolor = validate_empty('Label Color')
     add_label(item, labelname, labelcolor)
   end
 

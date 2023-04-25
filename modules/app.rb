@@ -1,6 +1,7 @@
 require_relative './books'
 require_relative './labels'
 require_relative './json_helper'
+require 'pry'
 
 class App
   attr_accessor :books
@@ -47,7 +48,14 @@ class App
   end
 
   def list_items(list)
-    list.each_with_index { |obj, index| print "[#{index}] - #{obj.print_data}" }
+    list.each_with_index do |obj, index|
+      print "[#{index + 1}] - #{obj.print_data}"
+      if (obj.class == Label)
+        obj.items.each_with_index do |item, index|
+          print "\t(#{index + 1}) #{item.print_data}"
+        end
+      end
+    end
   end
 
   def read_files
@@ -67,7 +75,7 @@ class App
             obj['name'],
             obj['publisher'],
             obj['date'],
-            obj['cover_state']
+            obj['cover_state'],
           )
       end
       @labels.add_label(item, obj['labeltitle'], obj['labelcolor'])

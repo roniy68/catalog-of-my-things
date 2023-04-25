@@ -15,13 +15,13 @@ class Book < Item
       publisher: @publisher,
       cover_state: @cover_state,
       labeltitle: @label.title,
-      labelcolor: @label.color
+      labelcolor: @label.color,
     }
     JSON.generate(bookhash)
   end
 
   def print_data
-    "Title:#{@name} Publisher:#{@publisher} Date: #{@publish_date} State: #{@cover_state}\n"
+    "Book Title - #{@name} | Publisher - #{@publisher} | Date - #{@publish_date} | State - #{@cover_state}\n"
   end
 
   private

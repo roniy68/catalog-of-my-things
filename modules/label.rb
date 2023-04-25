@@ -19,6 +19,6 @@ class Label
   end
 
   def print_data
-    "Label Title: #{@title} - Color: #{@color}\n"
+    "Label Title - #{@title} | Color - #{@color}\n"
   end
 end
