@@ -8,5 +8,6 @@ describe Books do
   it '#add_book' do
     book = @books.add_book('Troy', 'Penguin', '2022-12-12', 'good')
     expect(book).to be_instance_of(Book)
+    expect(@books.bookslist.length).to eql 1
   end
 end
