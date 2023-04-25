@@ -1,5 +1,5 @@
 class Label
-  attr_reader :title, :color
+  attr_reader :title, :color, :items
 
   def initialize(title, color)
     @id = Random.rand(1...1000)
@@ -19,6 +19,6 @@ class Label
   end
 
   def print_data
-    "Label Title: #{@title} - Color: #{@color}\n"
+    "Label Title - #{@title} | Color - #{@color}\n"
   end
 end
