@@ -9,6 +9,7 @@ class App
   attr_accessor :books
 
   BOOKFILE = './data/books.json'.freeze
+  GAMEFILE = './data/games.json'.freeze
   def initialize
     @books = Books.new
     @labels = Labels.new
@@ -66,25 +67,42 @@ class App
 
   def read_files
     create_objs_from_file(JsonHelper.read_from_json(BOOKFILE))
+    create_objs_from_file(JsonHelper.read_from_json(GAMEFILE))
   end
 
   def write_files
     JsonHelper.write_to_json(@books.bookslist, BOOKFILE)
+    JsonHelper.write_to_json(@games.gameslist, GAMEFILE)
   end
 
   def create_objs_from_file(hashlist)
     hashlist.each do |obj|
       item = nil
       if obj['type'] == 'Book'
-        item =
-          @books.add_book(
-            obj['name'],
-            obj['publisher'],
-            obj['date'],
-            obj['cover_state']
-          )
+        item = create_book_obj(obj)
+      elsif obj['type'] == 'Game'
+        item = create_game_obj(obj)
       end
+
       @labels.add_label(item, obj['labeltitle'], obj['labelcolor'])
     end
+  end
+
+  def create_book_obj(obj)
+    @books.add_book(
+      obj['name'],
+      obj['publisher'],
+      obj['date'],
+      obj['cover_state']
+    )
+  end
+
+  def create_game_obj(obj)
+    @games.add_game(
+      obj['name'],
+      obj['multiplayer'],
+      obj['date'],
+      obj['last_played_at']
+    )
   end
 end
