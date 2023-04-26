@@ -16,14 +16,14 @@ class Game < Item
       last_played_at: @last_played_at,
       multiplayer: @multiplayer,
       labeltitle: @label.title,
-      labelcolor: @label.color
+      labelcolor: @label.color,
     }
     JSON.generate(gamehash)
   end
 
   def print_data
-    "Game Title - #{@name} | Multiplayer - #{@multiplayer} | Date - #{@publish_date}\n
-    | last_played_at - #{@last_played_at}\n"
+    "Game Title - #{@name} | Multiplayer - #{@multiplayer} | Date - #{@publish_date}" \
+      "| last_played_at - #{@last_played_at}\n"
   end
 
   private
