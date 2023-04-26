@@ -15,7 +15,7 @@ class Book < Item
       publisher: @publisher,
       cover_state: @cover_state,
       labeltitle: @label.title,
-      labelcolor: @label.color,
+      labelcolor: @label.color
     }
     JSON.generate(bookhash)
   end

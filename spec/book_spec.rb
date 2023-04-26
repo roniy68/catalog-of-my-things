@@ -1,4 +1,4 @@
-require_relative '../modules/book.rb'
+require_relative '../modules/book'
 
 describe Book do
   before :each do
@@ -19,7 +19,7 @@ describe Book do
 
   it '#print_data' do
     expect(
-      @book.print_data,
+      @book.print_data
     ).to eql "Book Title - Math Basic | Publisher - Penguin | Date - 2022-12-12 | State - good\n"
   end
 end
