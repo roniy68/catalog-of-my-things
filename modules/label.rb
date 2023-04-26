@@ -13,11 +13,6 @@ class Label
     item.label = self
   end
 
-  def create_json
-    labelhash = { title: @title, color: @color }
-    JSON.generate(labelhash)
-  end
-
   def print_data
     "Label Title - #{@title} | Color - #{@color}\n"
   end
