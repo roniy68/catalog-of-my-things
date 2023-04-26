@@ -23,7 +23,7 @@ class Game < Item
 
   def print_data
     "Game Title - #{@name} | Multiplayer - #{@multiplayer} | Date - #{@publish_date} "\
-    "| last_played_at - #{@last_played_at}\n"
+      "| last_played_at - #{@last_played_at}\n"
   end
 
   private
