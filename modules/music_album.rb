@@ -1,4 +1,3 @@
-# rubocop:disable Metrics/ParameterLists
 require_relative './item'
 class MusicAlbum < Item
   attr_accessor :on_spotify
@@ -10,7 +9,7 @@ class MusicAlbum < Item
 
   def can_be_archived?
     return true if super && @on_spotify == true
+
     false
   end
 end
-# rubocop:enable Metrics/ParameterLists
