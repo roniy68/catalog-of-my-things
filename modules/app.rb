@@ -67,7 +67,7 @@ class App
 
   def read_files
     create_objs_from_file(JsonHelper.read_from_json(BOOKFILE))
-    create_objs_from_file(JsonHelper.read_from_json(GAMEFILE))
+    created_objs_from_file(JsonHelper.read_from_json(GAMEFILE))
   end
 
   def write_files
@@ -86,7 +86,16 @@ class App
             obj['date'],
             obj['cover_state']
           )
-      elsif obj['type'] == 'Game'
+      end
+
+      @labels.add_label(item, obj['labeltitle'], obj['labelcolor'])
+    end
+  end
+
+  def created_objs_from_file(hashlist)
+    hashlist.each do |obj|
+      item = nil
+      if obj['type'] == 'Game'
         item =
           @games.add_game(
             obj['name'],
@@ -95,7 +104,6 @@ class App
             obj['last_played_at']
           )
       end
-
       @labels.add_label(item, obj['labeltitle'], obj['labelcolor'])
     end
   end
