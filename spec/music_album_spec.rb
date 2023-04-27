@@ -26,7 +26,7 @@ describe 'MusicAlbum' do
 
   it '#create_json' do
     expect(@album.create_json).not_to be_nil
-    expect(@album.create_json).to be_instance_of(String)
+    expect(@album.create_json).to be_instance_of(Hash)
   end
 
   it '#print_data' do

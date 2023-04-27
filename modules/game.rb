@@ -9,7 +9,7 @@ class Game < Item
   end
 
   def create_json
-    gamehash = {
+    {
       type: 'Game',
       name: @name,
       date: @publish_date,
@@ -21,7 +21,6 @@ class Game < Item
       auth_fname: @author.first_name,
       auth_lname: @author.last_name
     }
-    JSON.generate(gamehash)
   end
 
   def print_data

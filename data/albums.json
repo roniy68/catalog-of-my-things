@@ -1,2 +1,24 @@
-{"type":"Album","name":"Midnights","date":"2022-06-06","onspotify":true,"labeltitle":"new album","labelcolor":"blue","genre":"pop","auth_fname":"Taylor","auth_lname":"Swift"}
-{"type":"Album","name":"8","date":"2022-12-12","onspotify":true,"labeltitle":"new album","labelcolor":"blue","genre":"heavy metal","auth_fname":"Rammstein","auth_lname":"Rammstein"}
+[
+  {
+    "type": "Album",
+    "name": "Living Things",
+    "date": "2012-08-25",
+    "onspotify": true,
+    "labeltitle": "gift",
+    "labelcolor": "green",
+    "genre": "numetal",
+    "auth_fname": "Linkin",
+    "auth_lname": "Park"
+  },
+  {
+    "type": "Album",
+    "name": "Zeit",
+    "date": "2022-03-23",
+    "onspotify": true,
+    "labeltitle": "new album",
+    "labelcolor": "yellow",
+    "genre": "heavy metal",
+    "auth_fname": "Rammstein",
+    "auth_lname": "R"
+  }
+]
