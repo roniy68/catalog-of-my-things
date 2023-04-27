@@ -11,23 +11,17 @@ class MusicAlbums
   def create_music_album
     print "Enter Album name: \n"
     name = validate_empty('Music Album')
-    print "Enter publisher name: \n"
-    publisher = validate_empty('Publisher')
-    print "Enter publish date [YYYY-MM-DD]: \n"
+    print "Enter release date [YYYY-MM-DD]: \n"
     date = validate_date
-    print "Cover state [new/good/bad]: \n"
-    coverstate = validate_empty('Cover state [new/good/bad]')
-    add_book(
-      capitalize_text(name),
-      capitalize_text(publisher),
-      date,
-      coverstate
-    )
+    print "Available on Spotify? [yes/no]: \n"
+    option1 = validate_empty('On Spotify?')
+    onspotify = option1.downcase == 'yes' || option1.downcase == 'y'
+    add_music_album(capitalize_text(name), date, onspotify)
   end
 
-  def add_music_album(name, publisher, date, coverstate)
-    music_album = MusicAlbum.new(name, date, publisher, coverstate)
+  def add_music_album(name, date, onspotify)
+    music_album = MusicAlbum.new(name, date, onspotify)
     @albumlist << music_album
-    book
+    music_album
   end
 end
