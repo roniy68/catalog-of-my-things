@@ -4,15 +4,15 @@ CREATE TABLE label(
   id INTEGER GENERATED ALWAYS AS IDENTITY,
   title VARCHAR,
   color VARCHAR,
-  PRIMARY KEY(title)
+  PRIMARY KEY(id)
 );
 
 CREATE TABLE book(
   id INTEGER GENERATED ALWAYS AS IDENTITY,
   name VARCHAR,
-  genre VARCHAR,
-  author VARCHAR,
-  label VARCHAR REFERENCES label(title),
+  genre VARCHAR REFERENCES genre(id),
+  author VARCHAR REFERENCES author(id),
+  label VARCHAR REFERENCES label(id),
   publish_date DATE,
   archived BOOLEAN,
   publisher VARCHAR,
@@ -38,17 +38,19 @@ CREATE TABLE game(
 );
 
 CREATE TABLE album (
-  id INTEGER PRIMARY KEY,
-  source_id INTEGER,
-  label_id INTEGER REFERENCES label(id),
-  genre_id INTEGER,
-  author_id INTEGER,
-  published_date INTEGER,
+  id INTEGER GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR,
+  genre VARCHAR REFERENCES genre(id),
+  author VARCHAR REFERENCES author(id),
+  label VARCHAR REFERENCES label(id),
+  publish_date DATE,
   archived BOOLEAN,
   on_spotify BOOLEAN,
+  PRIMARY KEY(id)
 )
 
 CREATE TABLE genre (
-    id INTEGER PRIMARY,
+    id INTEGER GENERATED ALWAYS AS IDENTITY,
     name VARCHAR,
+    PRIMARY KEY(id)
 )
