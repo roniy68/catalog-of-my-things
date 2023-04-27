@@ -24,7 +24,7 @@ class Book < Item
   end
 
   def print_data
-    "Book Title - #{@name} | Author: #{@author.first_name} #{@author.last_name}| Publisher - #{@publisher} " \
+    "Book Title - #{@name} | Author: #{@author.first_name} #{@author.last_name} | Publisher - #{@publisher} " \
       "| Publish date - #{@publish_date} | State - #{@cover_state}\n"
   end
 

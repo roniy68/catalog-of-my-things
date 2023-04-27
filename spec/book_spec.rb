@@ -6,7 +6,17 @@ describe Book do
     label = double('label')
     allow(label).to receive(:title) { 'dummy title' }
     allow(label).to receive(:color) { 'dummy color' }
+    allow(label).to receive(:items) { [] }
     @book.label = label
+    author = double('author')
+    allow(author).to receive(:first_name) { 'firstname' }
+    allow(author).to receive(:last_name) { 'lastname' }
+    allow(author).to receive(:items) { [] }
+    @book.author = author
+    genre = double('genre')
+    allow(genre).to receive(:name) { 'dummy genre' }
+    allow(genre).to receive(:items) { [] }
+    @book.genre = genre
   end
   it 'create book instance' do
     expect(@book).to be_instance_of(Book)
@@ -20,6 +30,7 @@ describe Book do
   it '#print_data' do
     expect(
       @book.print_data
-    ).to eql "Book Title - Math Basic | Publisher - Penguin | Date - 2022-12-12 | State - good\n"
+    ).to eql 'Book Title - Math Basic | Author: firstname lastname | ' \
+             "Publisher - Penguin | Publish date - 2022-12-12 | State - good\n"
   end
 end
