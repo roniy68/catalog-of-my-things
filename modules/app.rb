@@ -62,7 +62,7 @@ class App
     list.each_with_index do |obj, index|
       print "[#{index + 1}] - #{obj.print_data}"
       unless obj.instance_of?(Label) || obj.instance_of?(Genre) ||
-               obj.instance_of?(Author)
+             obj.instance_of?(Author)
         next
       end
 
@@ -102,7 +102,7 @@ class App
       obj['name'],
       obj['publisher'],
       obj['date'],
-      obj['cover_state'],
+      obj['cover_state']
     )
   end
 
@@ -111,7 +111,7 @@ class App
       obj['name'],
       obj['multiplayer'],
       obj['date'],
-      obj['last_played_at'],
+      obj['last_played_at']
     )
   end
 end

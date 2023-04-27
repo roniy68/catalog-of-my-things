@@ -4,6 +4,7 @@ require_relative './validator'
 class Genres
   include Validator
   attr_accessor :genreslist
+
   def initialize
     @genreslist = []
   end

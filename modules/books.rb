@@ -22,7 +22,7 @@ class Books
       capitalize_text(name),
       capitalize_text(publisher),
       date,
-      coverstate,
+      coverstate
     )
   end
 

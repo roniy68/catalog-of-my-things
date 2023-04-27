@@ -27,6 +27,6 @@ module Validator
   end
 
   def capitalize_text(text)
-    text.split(' ').map(&:capitalize).join(' ')
+    text.split.map(&:capitalize).join(' ')
   end
 end
