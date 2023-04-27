@@ -8,7 +8,7 @@ class Book < Item
   end
 
   def create_json
-    bookhash = {
+    {
       type: 'Book',
       name: @name,
       date: @publish_date,
@@ -18,9 +18,8 @@ class Book < Item
       labelcolor: @label.color,
       genre: @genre.name,
       auth_fname: @author.first_name,
-      auth_lname: @author.last_name
+      auth_lname: @author.last_name,
     }
-    JSON.generate(bookhash)
   end
 
   def print_data
