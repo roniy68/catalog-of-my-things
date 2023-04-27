@@ -52,6 +52,10 @@ Catalog of My Things is a Ruby group Capstone project. It's a minimalistic catal
 - Provides options to catalog user's personal album ,books and games
 - Development Tools : Ruby and rbenv 🔗
 
+### Video Presentation
+
+Our video presentation can be accessed with [this link](https://drive.google.com/file/d/1xq0QUm2ByN18SdXUL30k75M_4NmlqEAF/view?usp=sharing)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
