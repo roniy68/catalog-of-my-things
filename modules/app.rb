@@ -1,46 +1,54 @@
 require_relative './books'
+require_relative './games'
+require_relative './music_albums'
 require_relative './labels'
 require_relative './authors'
-require_relative './games'
 require_relative './genres'
 require_relative './json_helper'
-require 'pry'
 
 class App
   attr_accessor :books
 
   BOOKFILE = './data/books.json'.freeze
   GAMEFILE = './data/games.json'.freeze
+  ALBUMFILE = './data/albums.json'.freeze
   def initialize
     @books = Books.new
-    @labels = Labels.new
     @games = Games.new
+    @albums = MusicAlbums.new
+    @labels = Labels.new
     @authors = Authors.new
     @genres = Genres.new
     read_files
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
-  # rubocop:disable Metrics/MethodLength
   def evaluate_options(option)
     case option
     when 1
       list_items(@books.bookslist, 'Books')
     when 2
-      puts 'implement option 2'
+      list_items(@albums.albumlist, 'Albums')
     when 3
       list_items(@games.gameslist, 'Games')
     when 4
       list_items(@genres.genreslist, 'Genres')
     when 5
       list_items(@labels.labelslist, 'Labels')
+    else
+      evaluate_options1(option)
+    end
+  end
+
+  def evaluate_options1(option)
+    case option
     when 6
       list_items(@authors.authorslist, 'Authors')
     when 7
       book = @books.create_book
       add_attributes(book)
     when 8
-      puts 'implement option 8'
+      album = @albums.create_music_album
+      add_attributes(album)
     when 9
       game = @games.create_game
       add_attributes(game)
@@ -48,8 +56,6 @@ class App
       print "Please enter a valid option:\n"
     end
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
-  # rubocop:enable Metrics/MethodLength
 
   def add_attributes(item)
     @authors.create_author(item)
@@ -75,21 +81,25 @@ class App
   def read_files
     create_objs_from_file(JsonHelper.read_from_json(BOOKFILE))
     create_objs_from_file(JsonHelper.read_from_json(GAMEFILE))
+    create_objs_from_file(JsonHelper.read_from_json(ALBUMFILE))
   end
 
   def write_files
     JsonHelper.write_to_json(@books.bookslist, BOOKFILE)
     JsonHelper.write_to_json(@games.gameslist, GAMEFILE)
+    JsonHelper.write_to_json(@albums.albumlist, ALBUMFILE)
   end
 
   def create_objs_from_file(hashlist)
     hashlist.each do |obj|
-      item = nil
-      if obj['type'] == 'Book'
-        item = create_book_obj(obj)
-      elsif obj['type'] == 'Game'
-        item = create_game_obj(obj)
-      end
+      item =
+        if obj['type'] == 'Book'
+          create_book_obj(obj)
+        elsif obj['type'] == 'Game'
+          create_game_obj(obj)
+        else
+          create_album_obj(obj)
+        end
 
       @labels.add_label(item, obj['labeltitle'], obj['labelcolor'])
       @genres.add_genre(item, obj['genre'])
@@ -113,5 +123,9 @@ class App
       obj['date'],
       obj['last_played_at']
     )
+  end
+
+  def create_album_obj(obj)
+    @albums.add_music_album(obj['name'], obj['date'], obj['onspotify'])
   end
 end
