@@ -28,7 +28,7 @@ class MusicAlbum < Item
       labelcolor: @label.color,
       genre: @genre.name,
       auth_fname: @author.first_name,
-      auth_lname: @author.last_name,
+      auth_lname: @author.last_name
     }
   end
 end
