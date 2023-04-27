@@ -16,7 +16,10 @@ class Game < Item
       last_played_at: @last_played_at,
       multiplayer: @multiplayer,
       labeltitle: @label.title,
-      labelcolor: @label.color
+      labelcolor: @label.color,
+      genre: @genre.name,
+      auth_fname: @author.first_name,
+      auth_lname: @author.last_name,
     }
     JSON.generate(gamehash)
   end

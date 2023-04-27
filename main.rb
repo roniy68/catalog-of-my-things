@@ -4,12 +4,12 @@ require 'fileutils'
 def main
   FileUtils.mkdir_p('data')
   menu =
-    "Please select an option:\n" \
-    "[1] - All my books          [4] - All genres   [7] - Add a book\n" \
-    "[2] - All my music albums   [5] - All labels   [8] - Add a music album\n" \
-    "[3] - All my games          [6] - All authors  [9] - Add a game\n" \
-    "[10] - Exit\n" \
-    "Enter an option:\n"
+    "\nPlease select an option:\n" \
+      "[1] - All my books     [2] - All my music albums   [3] - All my games\n" \
+      "[4] - All genres       [5] - All labels            [6] - All authors\n" \
+      "[7] - Add a book       [8] - Add music album       [9] - Add a game\n" \
+      "[10] - Exit\n" \
+      "Enter an option:\n"
   app = App.new
   while menu
     print menu

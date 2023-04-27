@@ -15,6 +15,6 @@ class Author
   end
 
   def print_data
-    "Author FullName - #{@first_name} #{@last_name}\n"
+    "Author - #{@first_name} #{@last_name}\n"
   end
 end

@@ -18,7 +18,12 @@ class Books
     date = validate_date
     print "Cover state [new/good/bad]: \n"
     coverstate = validate_empty('Cover state [new/good/bad]')
-    add_book(name, publisher, date, coverstate)
+    add_book(
+      capitalize_text(name),
+      capitalize_text(publisher),
+      date,
+      coverstate,
+    )
   end
 
   def add_book(name, publisher, date, coverstate)
