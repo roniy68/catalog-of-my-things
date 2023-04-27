@@ -10,11 +10,11 @@ class Authors
   end
 
   def create_author(item)
-    print "Add author First_name: \n"
+    print "Add author First Name: \n"
     first_name = validate_empty('First Name')
-    print "Add author Last_name: \n"
+    print "Add author Last Name: \n"
     last_name = validate_empty('Last Name')
-    add_author(item, first_name, last_name)
+    add_author(item, capitalize_text(first_name), capitalize_text(last_name))
   end
 
   def add_author(item, first_name, last_name)

@@ -6,9 +6,15 @@ describe Game do
     author = double('author')
     allow(author).to receive(:first_name) { 'Harry' }
     allow(author).to receive(:last_name) { 'Ram' }
+    allow(author).to receive(:items) { [] }
     label = double('label')
     allow(label).to receive(:title) { 'dummy title' }
     allow(label).to receive(:color) { 'dummy color' }
+    allow(label).to receive(:items) { [] }
+    genre = double('genre')
+    allow(genre).to receive(:name) { 'dummy genre' }
+    allow(genre).to receive(:items) { [] }
+    @game.genre = genre
     @game.author = author
     @game.label = label
   end

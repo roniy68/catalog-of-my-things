@@ -2,6 +2,7 @@ require_relative './books'
 require_relative './labels'
 require_relative './authors'
 require_relative './games'
+require_relative './genres'
 require_relative './json_helper'
 require 'pry'
 
@@ -15,6 +16,7 @@ class App
     @labels = Labels.new
     @games = Games.new
     @authors = Authors.new
+    @genres = Genres.new
     read_files
   end
 
@@ -23,17 +25,17 @@ class App
   def evaluate_options(option)
     case option
     when 1
-      list_items(@books.bookslist)
+      list_items(@books.bookslist, 'Books')
     when 2
       puts 'implement option 2'
     when 3
-      list_items(@games.gameslist)
+      list_items(@games.gameslist, 'Games')
     when 4
-      puts 'implement option 4'
+      list_items(@genres.genreslist, 'Genres')
     when 5
-      list_items(@labels.labelslist)
+      list_items(@labels.labelslist, 'Labels')
     when 6
-      list_items(@authors.authorslist)
+      list_items(@authors.authorslist, 'Authors')
     when 7
       book = @books.create_book
       add_attributes(book)
@@ -50,14 +52,19 @@ class App
   # rubocop:enable Metrics/MethodLength
 
   def add_attributes(item)
-    @labels.create_label(item)
     @authors.create_author(item)
+    @genres.create_genre(item)
+    @labels.create_label(item)
   end
 
-  def list_items(list)
+  def list_items(list, msg)
+    print "List is empty. Please add some #{msg}\n" if list.empty?
     list.each_with_index do |obj, index|
       print "[#{index + 1}] - #{obj.print_data}"
-      next unless obj.instance_of?(Label)
+      unless obj.instance_of?(Label) || obj.instance_of?(Genre) ||
+             obj.instance_of?(Author)
+        next
+      end
 
       obj.items.each_with_index do |item, i|
         print "\t(#{i + 1}) #{item.print_data}"
@@ -85,6 +92,8 @@ class App
       end
 
       @labels.add_label(item, obj['labeltitle'], obj['labelcolor'])
+      @genres.add_genre(item, obj['genre'])
+      @authors.add_author(item, obj['auth_fname'], obj['auth_lname'])
     end
   end
 
