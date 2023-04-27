@@ -19,13 +19,12 @@
   - [🛠 Built With ](#-built-with-)
     - [🧰 Tech Stack ](#-tech-stack-)
     - [💎 Key Features ](#-key-features-)
-  - [🚀 Live Demo ](#-live-demo-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
     - [Install](#install)
     - [Usage](#usage)
-    - [Deployment](#deployment)
+    - [Tests](#tests)
   - [📧 Contact ](#-contact-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
@@ -35,9 +34,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📊 OOP-School <a name="about-project"></a>
+# 📊 Catalog of My Things <a name="about-project"></a>
 
-A Simple app with Ruby with Basic UI and functionalities. It is a practice repository to understand the basics of OOP [ object oriented programming] in RUBY.
+Catalog of My Things is a Ruby group Capstone project. It's a minimalistic catalog maintanence application developed using Ruby.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -49,13 +48,13 @@ A Simple app with Ruby with Basic UI and functionalities. It is a practice repos
 
 ### 💎 Key Features <a name="key-features"></a>
 
-- Generate a comprehensive Folder Structure for Ruby App 💻
-- Understand the concept of setting up a project with bundle and gem 📈
+- Minimalistic user interface
+- Provides options to catalog user's personal album ,books and games
 - Development Tools : Ruby and rbenv 🔗
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Video Presentation
 
-<!-- LIVE DEMO -->
+Our video presentation can be accessed with [this link](https://drive.google.com/file/d/1xq0QUm2ByN18SdXUL30k75M_4NmlqEAF/view?usp=sharing)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -67,7 +66,10 @@ To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
-In order to run this project you need [Node.js](https://nodejs.org/en/) installed on your machine.
+In order to use this project, you need
+
+<li>Ruby environment installed in your local machine</li>
+<li>Git CLI</li>
 
 ### Setup
 
@@ -94,6 +96,14 @@ To run the project, execute the following command:
   ruby main.rb
 ```
 
+### Tests
+
+To run the tests, execute the following command:
+
+```sh
+  rspec spec
+```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
@@ -113,8 +123,8 @@ I am always looking for ways to improve my project. If you have any suggestions 
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [x] **Gem Bundle**
-- [ ] **Visualize contribution**
+- [x] **Implement edit entries and remove entries functionalities**
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
