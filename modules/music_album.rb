@@ -17,6 +17,7 @@ class MusicAlbum < Item
     "Album Name - #{@name} | Artist - #{@author.first_name} #{@author.last_name} " \
       "| On Spotify - #{@on_spotify}\n"
   end
+
   def create_json
     albumhash = {
       type: 'Album',
@@ -27,7 +28,7 @@ class MusicAlbum < Item
       labelcolor: @label.color,
       genre: @genre.name,
       auth_fname: @author.first_name,
-      auth_lname: @author.last_name,
+      auth_lname: @author.last_name
     }
     JSON.generate(albumhash)
   end

@@ -5,7 +5,6 @@ require_relative './labels'
 require_relative './authors'
 require_relative './genres'
 require_relative './json_helper'
-require 'pry'
 
 class App
   attr_accessor :books
@@ -23,8 +22,6 @@ class App
     read_files
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
-  # rubocop:disable Metrics/MethodLength
   def evaluate_options(option)
     case option
     when 1
@@ -37,6 +34,13 @@ class App
       list_items(@genres.genreslist, 'Genres')
     when 5
       list_items(@labels.labelslist, 'Labels')
+    else
+      evaluate_options1(option)
+    end
+  end
+
+  def evaluate_options1(option)
+    case option
     when 6
       list_items(@authors.authorslist, 'Authors')
     when 7
@@ -52,8 +56,6 @@ class App
       print "Please enter a valid option:\n"
     end
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
-  # rubocop:enable Metrics/MethodLength
 
   def add_attributes(item)
     @authors.create_author(item)
@@ -66,7 +68,7 @@ class App
     list.each_with_index do |obj, index|
       print "[#{index + 1}] - #{obj.print_data}"
       unless obj.instance_of?(Label) || obj.instance_of?(Genre) ||
-               obj.instance_of?(Author)
+             obj.instance_of?(Author)
         next
       end
 
@@ -90,14 +92,14 @@ class App
 
   def create_objs_from_file(hashlist)
     hashlist.each do |obj|
-      item = nil
-      if obj['type'] == 'Book'
-        item = create_book_obj(obj)
-      elsif obj['type'] == 'Game'
-        item = create_game_obj(obj)
-      else
-        item = create_album_obj(obj)
-      end
+      item =
+        if obj['type'] == 'Book'
+          create_book_obj(obj)
+        elsif obj['type'] == 'Game'
+          create_game_obj(obj)
+        else
+          create_album_obj(obj)
+        end
 
       @labels.add_label(item, obj['labeltitle'], obj['labelcolor'])
       @genres.add_genre(item, obj['genre'])
@@ -110,7 +112,7 @@ class App
       obj['name'],
       obj['publisher'],
       obj['date'],
-      obj['cover_state'],
+      obj['cover_state']
     )
   end
 
@@ -119,9 +121,10 @@ class App
       obj['name'],
       obj['multiplayer'],
       obj['date'],
-      obj['last_played_at'],
+      obj['last_played_at']
     )
   end
+
   def create_album_obj(obj)
     @albums.add_music_album(obj['name'], obj['date'], obj['onspotify'])
   end
