@@ -31,6 +31,7 @@ CREATE TABLE game(
   id serial PRIMARY KEY,
   author VARCHAR REFERENCES author(id),
   label VARCHAR REFERENCES label(title),
+  genre VARCHAR REFERENCES genre(id),
   publish_date DATE,
   can_be_archived BOOLEAN,
   multiplayer BOOLEAN,
