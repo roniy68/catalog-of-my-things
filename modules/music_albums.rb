@@ -26,8 +26,8 @@ class MusicAlbums
   end
 
   def add_music_album(name, publisher, date, coverstate)
-    music = MusicAlbum.new(name, date, publisher, coverstate)
-    @bookslist << book
+    music_album = MusicAlbum.new(name, date, publisher, coverstate)
+    @albumlist << music_album
     book
   end
 end
