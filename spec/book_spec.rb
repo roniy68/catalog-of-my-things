@@ -24,7 +24,7 @@ describe Book do
   end
   it '#create_json' do
     expect(@book.create_json).not_to be_nil
-    expect(@book.create_json).to be_instance_of(String)
+    expect(@book.create_json).to be_instance_of(Hash)
   end
 
   it '#print_data' do
